@@ -1,177 +1,278 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Nightclub Retention Landing Page</title>
 
-export default function NightclubRetentionLandingPage() {
-  return (
-    <main className="min-h-screen font-sans text-white bg-gradient-to-br from-gray-900 via-gray-800 to-black">
-      {/* HERO */}
-      <section className="relative flex flex-col items-center justify-center px-4 pt-24 pb-32 text-center">
-        <motion.h1
-          className="text-4xl font-extrabold tracking-tight sm:text-6xl drop-shadow-lg"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          Turn Walk‑Ins into VIPs on Autopilot
-        </motion.h1>
-        <p className="max-w-xl mt-6 text-lg text-gray-300">
-          Dionysus‑level retention & revenue systems for Calgary nightclubs—powered by CRM automation, irresistible offers, and data‑driven SMS/email blasts.
-        </p>
-        <div className="flex flex-wrap justify-center gap-4 mt-10">
-          <Button size="lg" className="text-lg">
-            Book a 10‑min Demo
-          </Button>
-          <Button size="lg" variant="outline" className="text-lg border-gray-500 hover:bg-gray-800">
-            See Pricing
-          </Button>
-        </div>
-      </section>
+    <!-- Tailwind (CDN build – quick and easy for demos) -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-      {/* FEATURES */}
-      <section className="px-6 py-20 bg-gray-950/60 backdrop-blur-sm">
-        <h2 className="mb-12 text-3xl font-bold text-center sm:text-4xl">What You Get</h2>
-        <div className="grid max-w-5xl grid-cols-1 gap-8 mx-auto sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              title: "CRM Build‑Out & Staff Scripts",
-              desc: "Mr. Black configured + 90‑min door & bar training—collect data without slowing the line.",
-            },
-            {
-              title: "QR‑Driven Offers",
-              desc: "Free‑shot, raffle & bottle‑discount funnels guests actually scan.",
-            },
-            {
-              title: "VIP Loyalty Engine",
-              desc: "Birthday comps, repeat‑visit perks & automated follow‑ups that boost LTV.",
-            },
-            {
-              title: "2× Weekly Promo Blasts",
-              desc: "Done‑for‑you SMS/email campaigns that fill slow nights & special events.",
-            },
-            {
-              title: "Wi‑Fi Guest Capture (optional)",
-              desc: "Auto‑grab emails the moment phones join your network—no extra hardware needed.",
-            },
-            {
-              title: "Weekly KPI Report",
-              desc: "Clear metrics on opt‑ins, redemptions, revenue lift & staff tips—no fluff dashboards.",
-            },
-          ].map((f, i) => (
-            <Card
-              key={i}
-              className="h-full bg-gray-900/80 border-gray-700 backdrop-blur-md shadow-xl hover:shadow-2xl transition-shadow duration-300"
-            >
-              <CardContent className="p-6">
-                <h3 className="mb-2 text-xl font-semibold text-amber-400">{f.title}</h3>
-                <p className="text-sm text-gray-300">{f.desc}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
+    <!-- React & friends -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
 
-      {/* PRICING */}
-      <section className="px-6 py-24 bg-gradient-to-b from-gray-950 to-gray-900">
-        <h2 className="mb-12 text-3xl font-bold text-center sm:text-4xl">Founder Pricing (first 3 clubs)</h2>
-        <div className="grid max-w-4xl grid-cols-1 gap-8 mx-auto sm:grid-cols-3">
-          {[
-            {
-              tier: "Starter Launch",
-              price: "$500",
-              freq: "one‑time",
-              benefits: [
-                "CRM + QR setup",
-                "Staff scripts & training",
-                "1 promo blast",
-              ],
-              highlight: false,
-            },
-            {
-              tier: "Growth Retainer",
-              price: "$1,000",
-              freq: "/month",
-              benefits: [
-                "Everything in Starter",
-                "2 promo blasts/week",
-                "VIP list management",
-                "Monthly KPI call",
-              ],
-              highlight: true,
-            },
-            {
-              tier: "VIP Expansion",
-              price: "$1,500",
-              freq: "/month",
-              benefits: [
-                "Everything in Growth",
-                "Wi‑Fi capture",
-                "Birthday & loyalty funnels",
-                "Bottle raffles",
-              ],
-              highlight: false,
-            },
-          ].map((p, i) => (
-            <Card
-              key={i}
-              className={`relative flex flex-col h-full border-gray-700 backdrop-blur-md shadow-2xl ${
-                p.highlight ? "ring-2 ring-amber-400" : ""
-              }`}
-            >
-              {p.highlight && (
-                <span className="absolute top-0 right-0 px-3 py-1 text-xs font-bold tracking-wider text-black uppercase bg-amber-400 rounded-bl-lg">
-                  Most Popular
-                </span>
-              )}
-              <CardContent className="p-8 grow flex flex-col">
-                <h3 className="mb-4 text-2xl font-bold text-center">{p.tier}</h3>
-                <div className="mb-6 text-center">
-                  <span className="text-4xl font-extrabold">{p.price}</span>
-                  <span className="text-sm text-gray-400">{p.freq}</span>
-                </div>
-                <ul className="mb-8 space-y-2 text-sm text-gray-300 grow">
-                  {p.benefits.map((b, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-5 h-5 text-amber-400"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                      </svg>
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-                <Button size="lg" className="w-full mt-auto text-lg">
-                  Book This Plan
+    <!-- Babel for in‑browser JSX transform -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+
+  <body class="antialiased">
+    <!-- React mounts here -->
+    <div id="root"></div>
+
+    <!-- Your component (type="text/babel" so Babel compiles the JSX) -->
+    <script type="text/babel">
+      const { motion } = window.framerMotion ?? {};
+
+      function NightclubRetentionLandingPage() {
+        /* Button, Card, CardContent are placeholders here.
+           For a demo, we’ll treat Button as a styled <button>,
+           and Card/CardContent as simple <div> wrappers.          */
+
+        const Button = ({
+          children,
+          variant,
+          className = "",
+          ...props
+        }) => (
+          <button
+            {...props}
+            className={`px-5 py-3 rounded-xl font-semibold transition ${
+              variant === "outline"
+                ? "border border-gray-500 hover:bg-gray-800"
+                : "bg-amber-600 hover:bg-amber-500"
+            } ${className}`}
+          >
+            {children}
+          </button>
+        );
+
+        const Card = ({ children, className = "" }) => (
+          <div
+            className={`rounded-2xl overflow-hidden ${className}`}
+          >
+            {children}
+          </div>
+        );
+
+        const CardContent = ({ children, className = "" }) => (
+          <div className={`p-6 ${className}`}>{children}</div>
+        );
+
+        return (
+          <main className="min-h-screen font-sans text-white bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+            {/* HERO */}
+            <section className="relative flex flex-col items-center justify-center px-4 pt-24 pb-32 text-center">
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl drop-shadow-lg">
+                Turn Walk‑Ins into VIPs on Autopilot
+              </h1>
+              <p className="max-w-xl mt-6 text-lg text-gray-300">
+                Dionysus‑level retention & revenue systems for Calgary
+                nightclubs—powered by CRM automation, irresistible offers,
+                and data‑driven SMS/email blasts.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 mt-10">
+                <Button className="text-lg">Book a 10‑min Demo</Button>
+                <Button
+                  variant="outline"
+                  className="text-lg border-gray-500"
+                >
+                  See Pricing
                 </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
+              </div>
+            </section>
 
-      {/* CTA */}
-      <section className="px-6 py-20 text-center bg-gray-950">
-        <h2 className="mb-6 text-3xl font-bold sm:text-4xl">
-          Ready to pack the dance floor?
-        </h2>
-        <p className="max-w-xl mx-auto mb-10 text-gray-300">
-          Secure founder pricing and see how we can lift your mid‑week revenue 25 % in the next 60 days.
-        </p>
-        <Button size="lg" className="text-lg">
-          Schedule a 10‑min Call
-        </Button>
-      </section>
+            {/* FEATURES */}
+            <section className="px-6 py-20 bg-gray-950/60 backdrop-blur-sm">
+              <h2 className="mb-12 text-3xl font-bold text-center sm:text-4xl">
+                What You Get
+              </h2>
+              <div className="grid max-w-5xl grid-cols-1 gap-8 mx-auto sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  {
+                    title: "CRM Build‑Out & Staff Scripts",
+                    desc:
+                      "Mr. Black configured + 90‑min door & bar training—collect data without slowing the line.",
+                  },
+                  {
+                    title: "QR‑Driven Offers",
+                    desc:
+                      "Free‑shot, raffle & bottle‑discount funnels guests actually scan.",
+                  },
+                  {
+                    title: "VIP Loyalty Engine",
+                    desc:
+                      "Birthday comps, repeat‑visit perks & automated follow‑ups that boost LTV.",
+                  },
+                  {
+                    title: "2× Weekly Promo Blasts",
+                    desc:
+                      "Done‑for‑you SMS/email campaigns that fill slow nights & special events.",
+                  },
+                  {
+                    title: "Wi‑Fi Guest Capture (optional)",
+                    desc:
+                      "Auto‑grab emails the moment phones join your network—no extra hardware needed.",
+                  },
+                  {
+                    title: "Weekly KPI Report",
+                    desc:
+                      "Clear metrics on opt‑ins, redemptions, revenue lift & staff tips—no fluff dashboards.",
+                  },
+                ].map((f, i) => (
+                  <Card
+                    key={i}
+                    className="h-full bg-gray-900/80 border border-gray-700 backdrop-blur-md shadow-xl hover:shadow-2xl transition-shadow duration-300"
+                  >
+                    <CardContent>
+                      <h3 className="mb-2 text-xl font-semibold text-amber-400">
+                        {f.title}
+                      </h3>
+                      <p className="text-sm text-gray-300">{f.desc}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </section>
 
-      {/* FOOTER */}
-      <footer className="px-6 py-8 text-sm text-center text-gray-500 bg-gray-900">
-        © {new Date().getFullYear()} Dionysus Drive Marketing · Calgary, AB
-      </footer>
-    </main>
-  );
-}
+            {/* PRICING */}
+            <section className="px-6 py-24 bg-gradient-to-b from-gray-950 to-gray-900">
+              <h2 className="mb-12 text-3xl font-bold text-center sm:text-4xl">
+                Founder Pricing (first 3 clubs)
+              </h2>
+              <div className="grid max-w-4xl grid-cols-1 gap-8 mx-auto sm:grid-cols-3">
+                {[
+                  {
+                    tier: "Starter Launch",
+                    price: "$500",
+                    freq: "one‑time",
+                    benefits: [
+                      "CRM + QR setup",
+                      "Staff scripts & training",
+                      "1 promo blast",
+                    ],
+                    highlight: false,
+                  },
+                  {
+                    tier: "Growth Retainer",
+                    price: "$1,000",
+                    freq: "/month",
+                    benefits: [
+                      "Everything in Starter",
+                      "2 promo blasts/week",
+                      "VIP list management",
+                      "Monthly KPI call",
+                    ],
+                    highlight: true,
+                  },
+                  {
+                    tier: "VIP Expansion",
+                    price: "$1,500",
+                    freq: "/month",
+                    benefits: [
+                      "Everything in Growth",
+                      "Wi‑Fi capture",
+                      "Birthday & loyalty funnels",
+                      "Bottle raffles",
+                    ],
+                    highlight: false,
+                  },
+                ].map((p, i) => (
+                  <Card
+                    key={i}
+                    className={`relative flex flex-col h-full border border-gray-700 backdrop-blur-md shadow-2xl ${
+                      p.highlight ? "ring-2 ring-amber-400" : ""
+                    }`}
+                  >
+                    {p.highlight && (
+                      <span className="absolute top-0 right-0 px-3 py-1 text-xs font-bold tracking-wider text-black uppercase bg-amber-400 rounded-bl-lg">
+                        Most Popular
+                      </span>
+                    )}
+                    <CardContent className="flex flex-col grow">
+                      <h3 className="mb-4 text-2xl font-bold text-center">
+                        {p.tier}
+                      </h3>
+                      <div className="mb-6 text-center">
+                        <span className="text-4xl font-extrabold">
+                          {p.price}
+                        </span>
+                        <span className="text-sm text-gray-400">
+                          {p.freq}
+                        </span>
+                      </div>
+                      <ul className="mb-8 space-y-2 text-sm text-gray-300 grow">
+                        {p.benefits.map((b, idx) => (
+                          <li
+                            key={idx}
+                            className="flex items-start gap-2"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-5 h-5 text-amber-400"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M4.5 12.75l6 6 9-13.5"
+                              />
+                            </svg>
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
+                      <Button size="lg" className="w-full mt-auto text-lg">
+                        Book This Plan
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </section>
+
+            {/* CTA */}
+            <section className="px-6 py-20 text-center bg-gray-950">
+              <h2 className="mb-6 text-3xl font-bold sm:text-4xl">
+                Ready to pack the dance floor?
+              </h2>
+              <p className="max-w-xl mx-auto mb-10 text-gray-300">
+                Secure founder pricing and see how we can lift your
+                mid‑week revenue 25 % in the next 60 days.
+              </p>
+              <Button size="lg" className="text-lg">
+                Schedule a 10‑min Call
+              </Button>
+            </section>
+
+            {/* FOOTER */}
+            <footer className="px-6 py-8 text-sm text-center text-gray-500 bg-gray-900">
+              © {new Date().getFullYear()} Dionysus Drive Marketing ·
+              Calgary, AB
+            </footer>
+          </main>
+        );
+      }
+
+      // Mount it
+      ReactDOM.createRoot(document.getElementById("root")).render(
+        <NightclubRetentionLandingPage />
+      );
+    </script>
+
+    <!-- (Optional) Framer Motion CDN for animation support -->
+    <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+  </body>
+</html>
